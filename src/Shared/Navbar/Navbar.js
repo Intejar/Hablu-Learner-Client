@@ -14,7 +14,7 @@ const Navbar = () => {
             <nav className="p-5 bg-white shadow md:flex md:items-center md:justify-between">
                 <div className='flex justify-between items-center'>
                     <span className='text-2xl cursor-pointer'>
-                        Hablu Learner
+                        <Link to='/'>Hablu Learner</Link>
                     </span>
                     <span onClick={()=>setOpen(!open)} className='text-3xl cursor-pointer mx-2 md:hidden block'>
                         <ion-icon name={open ? 'close':'menu'}></ion-icon>
@@ -22,7 +22,7 @@ const Navbar = () => {
                 </div>
                 <ul className={`md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500 ${open ? 'top-20 opacity-100':'top[-490]'} md:opacity-100 opacity-0`}>
                     <li className='mx-4 my-6 md:my-0'>
-                        <Link>HOME</Link>
+                        <Link to='/'>HOME</Link>
                     </li>
                     <li className='mx-4 my-6 md:my-0'>
                         <Link>COURSES</Link>
