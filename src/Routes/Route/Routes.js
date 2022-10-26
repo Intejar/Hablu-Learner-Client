@@ -3,6 +3,8 @@ import Main from "../../layout/Main";
 import CourseCatagory from "../../Pages/CourseCatagory/CourseCatagory";
 import Courses from "../../Pages/Courses/Courses";
 import Home from "../../Pages/Home/Home";
+import Register from "../../Pages/Register/Register";
+import Signin from "../../Pages/Signin/Signin";
 
 export const routes = createBrowserRouter([
     {
@@ -25,5 +27,13 @@ export const routes = createBrowserRouter([
                 loader:({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
             }
         ]
+    },
+    {
+        path:'/register',
+        element: <Register></Register>
+    },
+    {
+        path:'/signIn',
+        element:<Signin></Signin>
     }
 ])

@@ -11,7 +11,7 @@ const Main = () => {
                 <Navbar></Navbar>
             </header>
             <div className="">
-                <div className="sm:hidden md:hidden lg:hidden my-5 bg-blue-200">
+                <div className="sm:hidden md:hidden lg:hidden">
                     <Outlet></Outlet>
                 </div>
                 <div className="invisible  md:visible grid grid-cols-12 gap-3 lg:visible grid grid-cols-12 gap-3 ">
