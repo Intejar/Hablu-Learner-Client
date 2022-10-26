@@ -1,8 +1,25 @@
 import React from 'react';
+import Navbar from '../../Shared/Navbar/Navbar';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { useContext } from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+
+
 
 const Signin = () => {
+    const { providerLogin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider()
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
     return (
-        <div>
+        <div className=''>
+            <Navbar></Navbar>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
@@ -28,6 +45,7 @@ const Signin = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
+                                <button onClick={handleGoogleSignIn} className='btn btn-primary my-3'>google</button>
                             </div>
                         </div>
                     </div>
