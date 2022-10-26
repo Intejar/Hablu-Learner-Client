@@ -49,7 +49,11 @@ const Register = () => {
             setSuccess(true)
             form.reset()
         })
-        .catch(error => console.error(error))
+        .catch(error =>{
+            const errorMessage = error.message
+            setPassError(errorMessage)
+            console.error(error)
+        })
         console.log(name, email, password)
     }
     return (
@@ -73,7 +77,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Full Name</span>
                                 </label>
-                                <input type="text" name='name' placeholder="email" className="input input-bordered" />
+                                <input type="text" name='name' placeholder="name" className="input input-bordered" />
                             </div>
                             <div>
                                 <label className="label">
@@ -115,7 +119,7 @@ const Register = () => {
                                     <Link to='/signIn' className="label-text-alt link link-hover">Already Have An Account?</Link>
                                 </label>
                             </div>
-                            <p className='text-red-200'>{passerror}</p>
+                            <p className='text-red-400'>{passerror}</p>
                             {
                                 success && <p className='text-success'>User created successully.</p>
                             }
