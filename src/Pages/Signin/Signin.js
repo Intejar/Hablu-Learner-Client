@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { useContext } from 'react';
-import { GoogleAuthProvider } from 'firebase/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { GoogleAuthProvider , GithubAuthProvider} from 'firebase/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 
@@ -13,17 +13,27 @@ const Signin = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
-    const { logIn } = useContext(AuthContext)
+    const { logIn, passwordReset } = useContext(AuthContext)
     const { providerLogin } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
+    const gitProvider = new GithubAuthProvider()
     const [passerror, setPassError] = useState('');
     const [success, setSuccess] = useState(false);
     const [open, setOpen] = useState(false);
+    const [getemail, setEmail] = useState('');
     const toggle = () => {
         setOpen(!open)
     }
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+    const handleGithubSignIn = () => {
+        providerLogin(gitProvider)
             .then(res => {
                 const user = res.user;
                 console.log(user);
@@ -42,7 +52,7 @@ const Signin = () => {
                 console.log(user)
                 setSuccess(true)
                 form.reset()
-                navigate(from,{replace: true})
+                navigate(from, { replace: true })
             })
             .catch(e => {
                 const emsg = e.message;
@@ -51,6 +61,22 @@ const Signin = () => {
             })
 
     }
+    const emailBlur = event => {
+        let email = event.target.value
+        setEmail(email);
+    }
+    const resetPassword = () => {
+        passwordReset(getemail)
+            .then(() => {
+                alert('please check your given mail to reset password')
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+    }
+
     return (
         <div className=''>
             <Navbar></Navbar>
@@ -66,7 +92,7 @@ const Signin = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" name='email' className="input input-bordered" required />
+                                <input type="text" onBlur={emailBlur} placeholder="email" name='email' className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label flex justify-between">
@@ -75,9 +101,9 @@ const Signin = () => {
                                         (open === false) ? <FaEyeSlash onClick={toggle}></FaEyeSlash> : <FaEye onClick={toggle}></FaEye>
                                     }
                                 </label>
-                                <input  type={(open === false) ? 'password' : 'text'} name='password' placeholder="password" className="input input-bordered" />
+                                <input type={(open === false) ? 'password' : 'text'} name='password' placeholder="password" className="input input-bordered" />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <Link href="#" className="label-text-alt link link-hover" onClick={resetPassword}>Forgot password?</Link>
                                 </label>
                             </div>
                             <p className='text-red-400'>{passerror}</p>
@@ -87,6 +113,7 @@ const Signin = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                                 <button onClick={handleGoogleSignIn} className='btn btn-primary my-3'>google</button>
+                                <button onClick={handleGithubSignIn} className='btn btn-primary my-3'>github</button>
                             </div>
                         </div>
                     </div>

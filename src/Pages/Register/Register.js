@@ -7,17 +7,18 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
+    const { createUser, updateUserProfile, emailCheck } = useContext(AuthContext)
     const [passerror, setPassError] = useState('');
     const [success, setSuccess] = useState(false);
     const [open, setOpen] = useState(false);
-    const [weak , setWeak] = useState(false)
+    const [weak, setWeak] = useState(false)
+
     const toggle = () => {
         setOpen(!open)
     }
-    const passCheck = (event)=>{
+    const passCheck = (event) => {
         const pass = event.target.value;
-        if(pass.length >= 6){
+        if (pass.length >= 6) {
             setWeak(!weak)
         }
     }
@@ -42,18 +43,34 @@ const Register = () => {
             setPassError('Please use number')
             return;
         }
-        createUser(email,password)
-        .then(res=>{
-            const user = res.user
-            console.log(user)
-            setSuccess(true)
-            form.reset()
-        })
-        .catch(error =>{
-            const errorMessage = error.message
-            setPassError(errorMessage)
-            console.error(error)
-        })
+        createUser(email, password)
+            .then(res => {
+                const user = res.user
+                console.log(user)
+                setSuccess(true)
+                EmailVarify()
+                form.reset()
+                HandleUpdate(name)
+            })
+            .catch(error => {
+                const errorMessage = error.message
+                setPassError(errorMessage)
+                console.error(error)
+            })
+        const HandleUpdate = (name) => {
+            const data = {
+                displayName: name
+            }
+            updateUserProfile(data)
+                .then(() => { })
+                .catch(e => console.error(e))
+        }
+        const EmailVarify = () => {
+            alert('A varification mail has sent to your email inbox or spam!')
+            emailCheck()
+            .then(()=>{})
+
+        }
         console.log(name, email, password)
     }
     return (
@@ -69,7 +86,7 @@ const Register = () => {
                             <li className="step">Purchase</li>
                             <li className="step">Develop Your Skill</li>
                         </ul></p>
-                        <p className='text-red-500'>Password must contain one uppercase,one digit and 6 character long!! <progress className={`progress w-56 ${(weak === false)? 'progress-error':'progress-success'}  `} value={(weak === false)? '20':'80'} max="100"></progress></p>
+                        <p className='text-red-500'>Password must contain one uppercase,one digit and 6 character long!! <progress className={`progress w-56 ${(weak === false) ? 'progress-error' : 'progress-success'}  `} value={(weak === false) ? '20' : '80'} max="100"></progress></p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">

@@ -10,7 +10,7 @@ const CourseCard = ({ course }) => {
     return (
         <div className="card col-span-12 md:col-span-6 w-96 bg-base-100 shadow-xl">
             <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-            <div className="card-body">
+            <div className=" card-body">
                 <h2 className="card-title">
                     {title}
                     <div className="badge badge-secondary">NEW</div>

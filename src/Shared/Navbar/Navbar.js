@@ -82,12 +82,8 @@ const Navbar = () => {
                         </label></li>
                         <li>
                             {
-                                user ?
-                                    <>
-                                        <span>{user.displayName}</span>
-                                    </>
-                                    :
-                                    <Link to='/register'>Register</Link>
+                                user ? <span>{user.displayName}</span> : <Link to='/register'>Register</Link>
+
                             }
                         </li>
 
@@ -99,9 +95,9 @@ const Navbar = () => {
                                             <div className="w-10 rounded-full">
                                                 {
                                                     user.photoURL ?
-                                                        <img src={user.photoURL} />
+                                                        <div className="tooltip" data-tip={user.displayName}><img src={user.photoURL} /></div>
                                                         :
-                                                        <FaUserCircle className="text-3xl"></FaUserCircle>
+                                                        <div className="tooltip" data-tip={user.displayName}><FaUserCircle className="text-3xl"></FaUserCircle></div>
                                                 }
                                             </div>
                                         </label>

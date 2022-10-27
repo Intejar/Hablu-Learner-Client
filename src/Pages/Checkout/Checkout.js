@@ -1,11 +1,14 @@
 import React from 'react';
 import Navbar from '../../Shared/Navbar/Navbar';
 
-const Checkout = ({title}) => {
+const Checkout = () => {
+    const name = localStorage.getItem('name');
+    const price = localStorage.getItem('price');
     return (
         <div>
             <Navbar></Navbar>
-            <h1>this is Checkout {title}</h1>
+            <h1>this is Checkout {name} </h1>
+            <h1>this is Checkout {price} </h1>
 
         </div>
     );
