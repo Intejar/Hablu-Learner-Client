@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaUsers, FaAngleDoubleRight, FaFileDownload } from "react-icons/fa";
 import PrivateRoute from '../../Routes/PrivateRoute/PrivateRoute';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import Navbar from '../../Shared/Navbar/Navbar';
+import ReactPrint from 'react-to-print'
 
 
 const Courses = () => {
+    const ref = useRef()
     const { user } = useContext(AuthContext)
     const courses = useLoaderData()
     const { _id, title, details, image_url, total_view, rating, category_id, Price } = courses
@@ -19,7 +21,7 @@ const Courses = () => {
         <div>
             <Navbar></Navbar>
             <div className='hero min-h-screen bg-base-200'>
-                <div className="card card-compact w-96 bg-base-100 shadow-xl">
+                <div ref={ref} className="card card-compact w-96 bg-base-100 shadow-xl">
                     <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                     <div className="card-body">
                         <div className='flex justify-between'>
@@ -27,6 +29,7 @@ const Courses = () => {
                             <div className='flex space-x-2'>
                                 <FaUsers className='text-orange-500 text-xl gap-2'></FaUsers>
                                 <span className='font-semibold'>{total_view} learners</span>
+                                <ReactPrint trigger={()=><FaFileDownload className='cursor-pointer'></FaFileDownload>} content={()=>ref.current} />
                             </div>
                         </div>
                         <p>{details}</p>
