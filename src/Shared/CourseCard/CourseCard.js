@@ -8,8 +8,8 @@ import Courses from '../../Pages/Courses/Courses';
 const CourseCard = ({ course }) => {
     const { _id, title, details, image_url, total_view, rating } = course
     return (
-        <div className="card col-span-12 md:col-span-6 w-96 bg-base-100 shadow-xl">
-            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+        <div className="card col-span-12 md:col-span-6 w-96 bg-blue-100 shadow-xl">
+            <figure><img src={image_url} alt="" /></figure>
             <div className=" card-body">
                 <h2 className="card-title">
                     {title}
@@ -22,7 +22,7 @@ const CourseCard = ({ course }) => {
                         <span className='text-xl font-extrabold'>{rating?.number}</span>
                     </div>
                     <div>
-                        <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"> <Link to={`/courses/${_id}`}>Learn More</Link></button>
+                        <button className="btn btn-xs bg-orange-500 sm:btn-sm md:btn-md lg:btn-lg"> <Link to={`/courses/${_id}`}>Learn More</Link></button>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import logo from '../../assests/images/logo.png'
 
 
 
@@ -30,7 +31,7 @@ const Navbar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Home</a></li>
+                        <li><Link to='/home'>Home</Link></li>
                         <li tabIndex={0}>
                             <Link to='/'>
                                 Courses
@@ -48,7 +49,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex-none hidden md:block lg:block">
                     <ul className="menu menu-horizontal p-0">
-                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/home'>Home</Link></li>
                         <li tabIndex={0}>
                             <Link to='/'>
                                 Courses
@@ -65,13 +66,14 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            <div className="navbar-center">
-                <Link className="btn btn-ghost normal-case text-xl" to='/'>daisyUI</Link>
+            <div className="navbar-center justify-center">
+                <img className="h-20" src={logo} alt="" />
+                <Link className="btn btn-ghost normal-case text-xl" to='/'>Hablu Learner</Link>
             </div>
             <div className="navbar-end">
                 <div className="flex-none">
                     <ul className="menu menu-horizontal p-0">
-                        <li><label className="swap swap-rotate">
+                        <li className="invisible sm:visible md:visible lg:visible"><label className="swap swap-rotate">
 
                             <input type="checkbox" />
 
@@ -80,7 +82,7 @@ const Navbar = () => {
                             <svg className="swap-off fill-current w-8 h-8 sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>
 
                         </label></li>
-                        <li>
+                        <li className="invisible sm:visible md:visible lg:visible">
                             {
                                 user ? <span>{user.displayName}</span> : <Link to='/register'>Register</Link>
 
@@ -109,6 +111,13 @@ const Navbar = () => {
                                             </li>
                                             <li><a>Settings</a></li>
                                             <li><a onClick={handleLogOut}>Logout</a></li>
+                                            <li className="sm:hidden md:hidden lg:hidden"><div className="form-control">
+                                                <label className="label cursor-pointer">
+                                                    <span className="label-text">Day</span>
+                                                    <input type="checkbox" className="toggle"/>
+                                                    <span className="label-text">Night</span>
+                                                </label>
+                                            </div></li>
                                         </ul>
                                     </div>
                                     :

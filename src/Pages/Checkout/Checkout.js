@@ -9,7 +9,6 @@ const Checkout = () => {
             <Navbar></Navbar>
             <h1>this is Checkout {name} </h1>
             <h1>this is Checkout {price} </h1>
-
         </div>
     );
 };

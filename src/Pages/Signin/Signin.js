@@ -105,6 +105,9 @@ const Signin = () => {
                                 <label className="label">
                                     <Link href="#" className="label-text-alt link link-hover" onClick={resetPassword}>Forgot password?</Link>
                                 </label>
+                                <label className="label">
+                                    <Link to='/register' className="label-text-alt link link-hover">don't have any account?</Link>
+                                </label>
                             </div>
                             <p className='text-red-400'>{passerror}</p>
                             {
