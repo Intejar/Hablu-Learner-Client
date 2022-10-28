@@ -114,8 +114,8 @@ const Navbar = () => {
                                                 <li><a onClick={handleLogOut}>Logout</a></li>
                                                 <li className="sm:hidden md:hidden lg:hidden"><div className="form-control">
                                                     <label className="label cursor-pointer">
-                                                        <span className="label-text">Day</span>
-                                                        <input type="checkbox" className="toggle" />
+                                                        <span onClick={() => setDarkToggle(false)} className="label-text">Day</span>
+                                                        <input onClick={() => setDarkToggle(!darkToggle)} type="checkbox" className="toggle" />
                                                         <span className="label-text">Night</span>
                                                     </label>
                                                 </div></li>
