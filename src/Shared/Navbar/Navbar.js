@@ -110,8 +110,8 @@ const Navbar = () => {
                                                         Profile
                                                     </Link>
                                                 </li>
-                                                <li><a>Settings</a></li>
-                                                <li><a onClick={handleLogOut}>Logout</a></li>
+                                                <li><Link>Settings</Link></li>
+                                                <li><Link onClick={handleLogOut}>Logout</Link></li>
                                                 <li className="sm:hidden md:hidden lg:hidden"><div className="form-control">
                                                     <label className="label cursor-pointer">
                                                         <span onClick={() => setDarkToggle(false)} className="label-text">Day</span>
