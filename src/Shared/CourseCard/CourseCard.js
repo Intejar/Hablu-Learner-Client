@@ -13,7 +13,6 @@ const CourseCard = ({ course }) => {
             <div className=" card-body">
                 <h2 className="card-title">
                     {title}
-                    <div className="badge badge-secondary">NEW</div>
                 </h2>
                 <p>{details}</p>
                 <div className="card-actions flex justify-between">
