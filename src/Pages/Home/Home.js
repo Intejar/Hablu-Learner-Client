@@ -2,23 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
+import py from '../../assests/images/PYTHON.png';
+import c from '../../assests/images/C++.png';
+import html from '../../assests/images/JS HTML CSS.png';
+import r from '../../assests/images/REACT.png';
+import hack from '../../assests/images/ETHICAL HACKING.png';
+import excel from '../../assests/images/EXCEL.png';
+import vfx from '../../assests/images/VFX ADVANCE.png';
+import cover from '../../assests/images/COVER.png';
+import certificate from '../../assests/images/CERTIFICATE.png'
 
 const Home = () => {
     return (
-        <div>
+        <div className=''>
             <Navbar></Navbar>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content text-center">
+            <div className="hero min-h-screen" style={{ backgroundImage: `url(${cover})` }}>
+                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
-                        <h1 className="text-5xl font-bold">Hello Learner!!</h1>
-                        <p className="py-6">Hablu Learner is one of the biggest platform of Bangladesh where you can have many IT related course with certification!</p>
+                        <h1 className="mb-5 text-5xl font-bold">Hello Learner</h1>
+                        <p className="mb-5">Hablu Learner provides you some excellent courses on IT. Learn and achieve your goal!!</p>
                         <button className="btn btn-primary"><Link to='/signIn'>Get Started</Link></button>
                     </div>
                 </div>
             </div>
-            <div className="hero min-h-screen bg-slate-400">
+            <div className="hero min-h-screen bg-slate-200 dark:bg-slate-500">
                 <div className="hero-content flex-col lg:flex-row">
-                    <img src="https://placeimg.com/260/400/arch" className="max-w-sm rounded-lg shadow-2xl" />
+                    <img src={certificate} className="max-w-sm rounded-lg shadow-2xl h-50 w-50" />
                     <div>
                         <h1 className="text-5xl font-bold">Get Certified!</h1>
                         <p className="py-6"> Our certifiacte ensure your skill</p>
@@ -35,25 +45,25 @@ const Home = () => {
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box">
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={vfx} className="h-60 w-60 rounded-box" />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={excel} className="h-60 w-60 rounded-box" />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={hack} className="h-60 w-60 rounded-box" />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={py} className="h-60 w-60 rounded-box" />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={c} className="h-60 w-60 rounded-box" />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={html} className="h-60 w-60 rounded-box" />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={r} className="h-60 w-60 rounded-box" />
                         </div>
                     </div>
                     <div>
@@ -84,29 +94,20 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="hero min-h-screen bg-slate-400">
+            <div className="hero min-h-screen bg-slate-600">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box">
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={r} className="rounded-box h-60 w-60" />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={hack} className="rounded-box h-60 w-60" />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={excel} className="rounded-box h-60 w-60" />
                         </div>
                         <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
-                        </div>
-                        <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
-                        </div>
-                        <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
-                        </div>
-                        <div className="carousel-item">
-                            <img src="https://placeimg.com/250/180/arch" className="rounded-box" />
+                            <img src={vfx} className="rounded-box h-60 w-60" />
                         </div>
                     </div>
                     <div className="indicator">

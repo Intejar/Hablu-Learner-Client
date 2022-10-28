@@ -22,7 +22,7 @@ const CourseCard = ({ course }) => {
                         <span className='text-xl font-extrabold'>{rating?.number}</span>
                     </div>
                     <div>
-                        <button className="btn btn-xs bg-orange-500 sm:btn-sm md:btn-md lg:btn-lg"> <Link to={`/courses/${_id}`}>Learn More</Link></button>
+                        <button className="btn btn-xs bg-orange-700 sm:btn-sm md:btn-md lg:btn-lg"> <Link to={`/courses/${_id}`}>Learn More</Link></button>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const LeftNav = () => {
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/course-category')
+        fetch('https://hablu-learner-server.vercel.app/course-category')
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { useContext } from 'react';
-import { GoogleAuthProvider , GithubAuthProvider} from 'firebase/auth';
+import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { FaEyeSlash, FaEye, FaGoogle, FaGithub } from "react-icons/fa";
 
 
 
@@ -29,6 +29,7 @@ const Signin = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }
@@ -37,6 +38,7 @@ const Signin = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }
@@ -77,6 +79,7 @@ const Signin = () => {
             });
     }
 
+
     return (
         <div className=''>
             <Navbar></Navbar>
@@ -84,7 +87,11 @@ const Signin = () => {
                 <form onSubmit={handleSubmit} className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p><ul className="steps steps-vertical">
+                            <li className="step step-primary text-md font-semibold">Login With Email</li>
+                            <li className="step text-md font-semibold">LogIn With Google </li>
+                            <li className="step text-md font-semibold">Login With Github</li>
+                        </ul></p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
@@ -105,9 +112,7 @@ const Signin = () => {
                                 <label className="label">
                                     <Link href="#" className="label-text-alt link link-hover" onClick={resetPassword}>Forgot password?</Link>
                                 </label>
-                                <label className="label">
-                                    <Link to='/register' className="label-text-alt link link-hover">don't have any account?</Link>
-                                </label>
+
                             </div>
                             <p className='text-red-400'>{passerror}</p>
                             {
@@ -115,9 +120,12 @@ const Signin = () => {
                             }
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
-                                <button onClick={handleGoogleSignIn} className='btn btn-primary my-3'>google</button>
-                                <button onClick={handleGithubSignIn} className='btn btn-primary my-3'>github</button>
+                                <button onClick={handleGoogleSignIn} className='btn btn-primary my-3 '><span className='flex justify-center space-x-3'><FaGoogle></FaGoogle> <span>google</span></span></button>
+                                <button onClick={handleGithubSignIn} className='btn btn-primary'><span className='flex justify-center space-x-3'><FaGithub></FaGithub> <span>github</span></span></button>
                             </div>
+                            <label className="label my-3">
+                                <Link to='/register' className="label-text-alt link link-hover text-primary">don't have any account?</Link>
+                            </label>
                         </div>
                     </div>
                 </form>

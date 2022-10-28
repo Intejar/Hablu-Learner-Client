@@ -22,14 +22,14 @@ const Courses = () => {
             <Navbar></Navbar>
             <div className='hero min-h-screen bg-base-200'>
                 <div ref={ref} className="card card-compact w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <figure><img src={image_url} alt="Shoes" /></figure>
                     <div className="card-body">
                         <div className='flex justify-between'>
                             <h2 className="card-title text-2xl font-bold">{title}</h2>
                             <div className='flex space-x-2'>
-                                <FaUsers className='text-orange-500 text-xl gap-2'></FaUsers>
+                                <FaUsers className='text-orange-700 text-xl gap-2'></FaUsers>
                                 <span className='font-semibold'>{total_view} learners</span>
-                                <ReactPrint trigger={()=><FaFileDownload className='cursor-pointer'></FaFileDownload>} content={()=>ref.current} />
+                                <ReactPrint trigger={()=><FaFileDownload className='cursor-pointer text-orange-700'></FaFileDownload>} content={()=>ref.current} />
                             </div>
                         </div>
                         <p>{details}</p>
@@ -41,11 +41,11 @@ const Courses = () => {
                             </ul>
                         </div>
                         <div className="card-actions justify-between">
-                            <span className='text-xl font-bold text-orange-500'>{Price}</span>
-                            <Link to={`/category/${category_id}`}><FaAngleDoubleRight className='text-xl'></FaAngleDoubleRight></Link>
+                            <span className='text-xl font-bold text-orange-700'>{Price}</span>
+                            <Link to={`/category/${category_id}`}><FaAngleDoubleRight className='text-xl text-orange-700'></FaAngleDoubleRight></Link>
                         </div>
                         <div className='flex justify-center'>
-                            <button className="btn btn-wide"> <Link to='/checkout' onClick={setData}>Premium Subscription</Link> </button>
+                            <button className="btn bg-orange-700 btn-wide"> <Link to='/checkout' onClick={setData}>Premium Subscription</Link> </button>
                         </div>
                     </div>
                 </div>

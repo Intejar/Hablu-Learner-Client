@@ -16,8 +16,8 @@ const Main = () => {
                     <Outlet></Outlet>
                 </div>
                 <div className="invisible  md:visible grid grid-cols-12 lg:visible grid grid-cols-12  ">
-                    <div className="p-5 md:col-span-3 lg:col-span-3 bg-gray-400"><LeftNav></LeftNav></div>
-                    <div className="col-span-12  md:col-span-9 lg:col-span-9 bg-slate-600"><Outlet></Outlet></div>
+                    <div className="p-5 md:col-span-3 lg:col-span-3 bg-gray-200 dark:bg-slate-400"><LeftNav></LeftNav></div>
+                    <div className="col-span-12  md:col-span-9 lg:col-span-9 bg-slate-300 dark:bg-slate-600"><Outlet></Outlet></div>
                 </div>
             </div>
             <Footer></Footer>

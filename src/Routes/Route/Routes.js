@@ -1,13 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import OrderBtn from "../../Button/OrderBtn";
 import Main from "../../layout/Main";
 import AllCourses from "../../Pages/AllCourses/AllCourses";
+import Blog from "../../Pages/Blog/Blog";
 import Checkout from "../../Pages/Checkout/Checkout";
 import CourseCatagory from "../../Pages/CourseCatagory/CourseCatagory";
 import Courses from "../../Pages/Courses/Courses";
+import FAQ from "../../Pages/FAQ/FAQ";
 import Home from "../../Pages/Home/Home";
 import Register from "../../Pages/Register/Register";
 import Signin from "../../Pages/Signin/Signin";
+import UserProfile from "../../Pages/UserProfile/UserProfile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
@@ -18,19 +20,19 @@ export const routes = createBrowserRouter([
             {
                 path:'/',
                 element:<AllCourses></AllCourses>,
-                loader:()=>fetch('http://localhost:5000/courses')
+                loader:()=>fetch('https://hablu-learner-server.vercel.app/courses')
             },
             {
                 path:'/category/:id',
                 element:<CourseCatagory></CourseCatagory>,
-                loader:({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader:({params}) => fetch(`https://hablu-learner-server.vercel.app/category/${params.id}`)
             }
         ]
     },
     {
         path:'/courses/:id',
         element:<Courses></Courses>,
-        loader:({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+        loader:({params}) => fetch(`https://hablu-learner-server.vercel.app/courses/${params.id}`)
     },
     {
         path:'/register',
@@ -47,5 +49,21 @@ export const routes = createBrowserRouter([
     {
         path:'/home',
         element:<Home></Home>
+    },
+    {
+        path:'*',
+        element: <div> <h1> Nothing  here </h1> </div>
+    },
+    {
+        path:'/blog',
+        element: <Blog></Blog>
+    },
+    {
+        path:'/FAQ',
+        element:<FAQ></FAQ>
+    },
+    {
+        path:'/profile',
+        element:<UserProfile></UserProfile>
     }
 ])

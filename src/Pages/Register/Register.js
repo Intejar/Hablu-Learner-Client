@@ -30,6 +30,7 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const img = form.image.value;
         const confirm = form.confirm.value;
         if (password !== confirm) {
             setPassError('password does not match!')
@@ -50,16 +51,17 @@ const Register = () => {
                 setSuccess(true)
                 EmailVarify()
                 form.reset()
-                HandleUpdate(name)
+                HandleUpdate(name, img)
             })
             .catch(error => {
                 const errorMessage = error.message
                 setPassError(errorMessage)
                 console.error(error)
             })
-        const HandleUpdate = (name) => {
+        const HandleUpdate = (name, img) => {
             const data = {
-                displayName: name
+                displayName: name,
+                photoURL : img
             }
             updateUserProfile(data)
                 .then(() => { })
@@ -68,7 +70,7 @@ const Register = () => {
         const EmailVarify = () => {
             alert('A varification mail has sent to your email inbox or spam!')
             emailCheck()
-            .then(()=>{})
+                .then(() => { })
 
         }
         console.log(name, email, password)
@@ -94,7 +96,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Full Name</span>
                                 </label>
-                                <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                                <input type="text" name='name' placeholder="name" className="input input-bordered" required />
                             </div>
                             <div>
                                 <label className="label">
@@ -109,9 +111,15 @@ const Register = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text">Image URL</span>
+                                </label>
+                                <input type="text" name='image' placeholder="image_url" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                                <input type="text" name='email' placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label flex justify-between">
@@ -129,7 +137,7 @@ const Register = () => {
                                         (open === false) ? <FaEyeSlash onClick={toggle}></FaEyeSlash> : <FaEye onClick={toggle}></FaEye>
                                     }
                                 </label>
-                                <input onChange={passCheck} type={(open === false) ? 'password' : 'text'} name='confirm' placeholder="confirm password" className="input input-bordered" />
+                                <input  type={(open === false) ? 'password' : 'text'} name='confirm' placeholder="confirm password" className="input input-bordered" />
 
 
                                 <label className="label">
